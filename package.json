@@ -1,0 +1,31 @@
+{
+  "name": "cartapi",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Vibe Commerce - Mock E-Com Cart (microservices)",
+  "workspaces": [
+    "services/*",
+    "gateway",
+    "frontend"
+  ],
+  "scripts": {
+    "build": "echo build not configured at root",
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:services": "concurrently \"npm --workspace services/product-service run dev\" \"npm --workspace services/cart-service run dev\" \"npm --workspace services/checkout-service run dev\" \"npm --workspace gateway run dev\"",
+    "test": "concurrently \"npm:TEST:*\"",
+    "TEST:backend": "cross-env NODE_ENV=test jest --runInBand --passWithNoTests",
+    "lint": "echo lint not configured"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.19.0",
+    "@types/supertest": "^2.0.16",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}
